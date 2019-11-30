@@ -155,11 +155,12 @@ int main(int argc, char** argv) {
                 }
         } while(codigoBarras != "-1");
         cout << endl << "Ventas de cada producto: ";
-        for(indice = 0; indice <= 13; indice++)
+        for(indice = 0; indice <= 12; indice++)
             {
-                cout << endl << "";
+                cout << endl << codigo[indice] << "    " << descripcion[indice] << "  "
+                << cantidad[indice] << "        vendidos:  " << totalArticulos[indice];       //Aquí se escribe el flujo de caja diario
             }
-
+        cout << endl << endl << "Estos son los ingresos totales de los productos: $" << totalIngresoCaja;
     return 0;
 }
 
