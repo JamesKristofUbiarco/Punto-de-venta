@@ -1,9 +1,8 @@
 #include <iostream>
-#include <wchar.h>
-#include <locale.h>
+#include <stdlib.h>
 using namespace std;
+
 int main(int argc, char** argv) {
-    setlocale(LC_ALL, "");          //Carácteres hispanos
 	string codigo[13]{              //son los codigos de barras
             "7501055317875",
             "7501030462859",
@@ -83,16 +82,16 @@ int main(int argc, char** argv) {
             100,
             100,
         };
-    int i2 = 0;
-    string articulosLlevadosDescripcion[i2]
+    string articulosLlevadosDescripcion[1300]
 		{
 		};
-	string articulosLlevadosCodigo[i2]{
+	string articulosLlevadosCodigo[1300]
+        {
 		};
-	string articulosLlevadosCantidad[i2]
+	int articulosLlevadosCantidad[1300]
 		{
 		};
-	string articulosLlevadosPrecio[i2]
+	int articulosLlevadosPrecio[1300]
 		{
 		};
 	int totalArticulos[13]
@@ -103,48 +102,63 @@ int main(int argc, char** argv) {
 	int bandera = 14;
 	int totalPrecio = 0;
 	int precioParcial;
+	int indice2 = 0;
+	int totalIngresoCaja = 0;
+	string cualquierTecla;
+
     do
         {
             cout << "Pon el codigo de barras" << endl;
             cin >> codigoBarras;
-            for (indice = 0; indice <= 13; indice++)
+            for (indice = 0; indice <= 12; indice++)
             {
-                if (codigoBarras==codigo[indice])
+                if (codigoBarras == codigo[indice])
                     {
-                    	i2 = i2 + 1;
                         bandera = indice;
                         inventario[indice] = inventario[indice] - 1;
                         totalArticulos[indice] = totalArticulos[indice] + 1;
-                        totalPrecio =precio[bandera] + totalPrecio;
-                        precioParcial = precio[bandera];
-                        cout << descripcion[bandera] << " " << cantidad[bandera] << " " << "$" << precio[bandera] << endl;
-                        cout << inventario[bandera] << endl;
-                        cout << "$" << precioParcial <<endl;
-                        articulosLlevadosDescripcion[i2] = descripcion[bandera];
+                        totalPrecio = precio[bandera] + totalPrecio;
+                        articulosLlevadosDescripcion[indice2] = descripcion[indice];
+                        articulosLlevadosCodigo[indice2] = codigo[indice];
+                        articulosLlevadosCantidad[indice2] = articulosLlevadosCantidad[indice2] + 1;
+                        articulosLlevadosPrecio[indice2] = precio[indice];
+                    	indice2 = indice2 + 1;
                     }
                 else
                     {
                     }
-            };
+            }
             if(bandera == 14)
                 {
-                    cout << descripcion[bandera];
+                    cout << "Producto no encontrado" << endl;
                 }
             else
                 {
                 }
-            if(codigoBarras != "0")
+            if(codigoBarras == "0")
                 {
-		            for(indice = 0; indice <= 12; indice++)
+		            for( indice = 0 ; indice <= indice2 - 1; indice++)
 		            {
-		                cout << endl << codigo[indice] << "    " << descripcion[indice] << "    " << totalArticulos[indice];
-		            };
+		                cout << endl << articulosLlevadosCodigo[indice] << "    " << articulosLlevadosDescripcion[indice]
+                        << "    $" << articulosLlevadosPrecio[indice];
+		            }
+		            cout << endl << "Total: $" << totalPrecio << endl;
+		            totalIngresoCaja = totalPrecio + totalIngresoCaja;
+		            totalPrecio = 0;
+		            indice2 = 0;
+		            cout << endl << "Pulsa cualquier caracter y pulsa enter para continuar";     //Esta parte limpia la pantalla con system(cls)
+		            cin >> cualquierTecla;
+		            system("cls");
                 }
             else
                 {
                 }
         } while(codigoBarras != "-1");
-        cout << endl << "Precio total: " << "$" <<totalPrecio;
+        cout << endl << "Ventas de cada producto: ";
+        for(indice = 0; indice <= 13; indice++)
+            {
+                cout << endl << "";
+            }
 
     return 0;
 }
