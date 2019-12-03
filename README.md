@@ -7,7 +7,7 @@ Un proyecto de la carrera de desarrollo de software en el **CETI Colomos** y el 
 
 ------------
 
-##Por ahora los códigos de barras que puedes escribir son:
+## Por ahora los códigos de barras que puedes escribir son:
 
 - "7501055317875"
 - "7501030462859"
