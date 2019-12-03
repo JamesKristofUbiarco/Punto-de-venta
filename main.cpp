@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-	string codigo[14]{              //son los codigos de barras
+	string codigo[13]{              //son los codigos de barras
             "7501055317875",
             "7501030462859",
             "016000506435",
@@ -14,12 +14,11 @@ int main(int argc, char** argv) {
             "7501011147942",
             "75067656",
             "7501086801046",
-            "84375998",
 			"75051938",
             "724869003520",
             "7501761865530"
 		};
-	string descripcion[14]          //Es el nombre del articulo
+	string descripcion[13]          //Es el nombre del articulo
         {
             "Fuze Tea Durazno",
             "galletas principe",
@@ -31,12 +30,11 @@ int main(int argc, char** argv) {
             "Inspireka",
             "Trident Azules",
             "Agua Epura",
-			"condones prudence",
 			"Bubbaloo de fresa",
             "gomitas de llave",
             "Stila fit"
         };
-	string cantidad[14]             //Es la cantidad que contiene el producto
+	string cantidad[13]             //Es la cantidad que contiene el producto
         {
             "600 ml",
             "105 gr",
@@ -48,7 +46,6 @@ int main(int argc, char** argv) {
             "45 gr",
             "6.5 gr",
             "1 litro",
-            "20 gr",
             "5.5 gr",
             "6 gr",
             "23 gr"
@@ -65,14 +62,12 @@ int main(int argc, char** argv) {
             18,
             3,
             8,
-            65,
             3,
             2,
             5,
         };
-    int inventario[14]
+    int inventario[13]
         {
-            100,
             100,
             100,
             100,
@@ -115,7 +110,7 @@ int main(int argc, char** argv) {
         {
             cout << "Pon el codigo de barras" << endl;
             cin >> codigoBarras;
-            for (indice = 0; indice <= 13; indice++)
+            for (indice = 0; indice <= 12; indice++)
             {
                 if (codigoBarras == codigo[indice])
                     {
@@ -161,7 +156,7 @@ int main(int argc, char** argv) {
                 }
         } while(codigoBarras != "-1");
         cout << endl << "Ventas de cada producto: ";
-        for(indice = 0; indice <= 13; indice++)
+        for(indice = 0; indice <= 12; indice++)
             {
                 cout << endl << codigo[indice] << "    " << descripcion[indice] << "  "
                 << cantidad[indice] << "        vendidos:  " << totalArticulos[indice];       //Aquí se escribe el flujo de caja diario
